@@ -41,19 +41,27 @@ def prompt():
   -------
   Command number entered by user (0, 1, 2, ...)
   """
-  print()
-  print(">> Enter a command:")
-  print("   0 => end")
-  print("   1 => stats")
-  print("   2 => users")
-  print("   3 => assets")
-  print("   4 => download")
-  print("   5 => download and display")
-  print("   6 => upload")
-  print("   7 => add user")
 
-  cmd = int(input())
-  return cmd
+  try:
+    print()
+    print(">> Enter a command:")
+    print("   0 => end")
+    print("   1 => stats")
+    print("   2 => users")
+    print("   3 => assets")
+    print("   4 => download")
+    print("   5 => download and display")
+    print("   6 => upload")
+    print("   7 => add user")
+
+    cmd = int(input())
+    return cmd
+
+  except Exception as e:
+    print("ERROR")
+    print("ERROR: invalid input")
+    print("ERROR")
+    return -1
 
 
 ###################################################################
