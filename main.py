@@ -79,27 +79,34 @@ def stats(bucketname, bucket, endpoint, dbConn):
   #
   # bucket info:
   #
-  print("S3 bucket name:", bucketname)
+  try: 
+    print("S3 bucket name:", bucketname)
 
-  assets = bucket.objects.all()
-  print("S3 assets:", len(list(assets)))
+    assets = bucket.objects.all()
+    print("S3 assets:", len(list(assets)))
 
-  #
-  # MySQL info:
-  #
-  print("RDS MySQL endpoint:", endpoint)
+    #
+    # MySQL info:
+    #
+    print("RDS MySQL endpoint:", endpoint)
 
-  sql = """
-  select now();
-  """
+    sql = """
+    select now();
+    """
 
-  row = datatier.retrieve_one_row(dbConn, sql)
-  if row is None:
-    print("Database operation failed...")
-  elif row == ():
-    print("Unexpected query failure...")
-  else:
-    print(row[0])
+    row = datatier.retrieve_one_row(dbConn, sql)
+    if row is None:
+      print("Database operation failed...")
+    elif row == ():
+      print("Unexpected query failure...")
+    else:
+      print(row[0])
+
+  except Exception as e:
+    print("ERROR")
+    print("ERROR: an exception was raised and caught")
+    print("ERROR")
+    print("MESSAGE:", str(e))
 
 
 #########################################################################
