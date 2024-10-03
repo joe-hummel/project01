@@ -3,7 +3,7 @@ FROM python:3.12.4-alpine3.20
 # add bash to alpine Linux:
 #
 RUN apk update && apk upgrade
-RUN apk add --no-cache bash
+RUN apk add --no-cache bash gcc g++ musl-dev
 #
 # turn off history file creation:
 #
